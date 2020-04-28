@@ -12,7 +12,6 @@ import { NewMessageComponent } from './new-message.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  
   onPosted(message) {
     console.log(message);
   }
