@@ -12,5 +12,8 @@ import { NewMessageComponent } from './new-message.component';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  name = 'World';
+  
+  onPosted(message) {
+    console.log(message);
+  }
 }
