@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
 import { MessagesComponent } from './messages.component';
 import { NewMessageComponent } from './new-message.component';
 
@@ -6,13 +6,16 @@ import { NewMessageComponent } from './new-message.component';
   selector: 'app-root',
   template: `
   <h1>Message Board</h1>
-  <new-message></new-message>
+  <new-message (onPosted)="onPosted($event)"></new-message>
   <messages></messages>
   `,
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
+
+  @ViewChild(MessagesComponent) messages : MessagesComponent;
+
   onPosted(message) {
-    console.log(message);
+    this.messages.messages.push(message);
   }
 }

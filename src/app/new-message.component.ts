@@ -22,15 +22,16 @@ import { WebService } from './web.service';
 
 export class NewMessageComponent {
 
-    @Output() onposted = new EventEmitter();
-    
-    constructor(private webService: WebService) {}
+    @Output() onPosted = new EventEmitter();
+
+    constructor(private webService : WebService) {}
 
     message = {
-        owner: "",
-        text: ""
-    }
+        owner: '',
+        text: ''
+    };
     post() {
         this.webService.postMessage(this.message);
+        this.onPosted.emit(this.message);
     }
 }

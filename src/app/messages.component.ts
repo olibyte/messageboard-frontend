@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { WebService } from './web.service';
 
-@Component ({
+@Component({
     // tslint:disable-next-line: component-selector
     selector: 'messages',
     template: `
@@ -14,12 +14,15 @@ import { WebService } from './web.service';
 })
 
 export class MessagesComponent {
-    constructor(private webService: WebService) {}
+    constructor(private webService : WebService) {}
+    
 
+    messages = [];
     async ngOnInit() {
         var response = await this.webService.getMessages();
-        this.messages = response;
-    }
+        // this.messages = response.json();
+        //no more json method in HttpClientModule
+        this.messages = JSON.parse(JSON.stringify(response));
 
-    messages : Object = [];
+    }
 }
